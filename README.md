@@ -1,1 +1,0 @@
-# tg-oc-tech
