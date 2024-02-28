@@ -1,0 +1,23 @@
+@use "src/shared/style/func/func";
+@use "src/shared/style/func/mixin/mixinText";
+
+.h1{
+  font-size: func.vw(40, 1920);
+  font-weight: bold;
+
+  @include mixinText.mediaText(40, 1440, 1440px);
+  @include mixinText.mediaText(40, 960, 960px);
+  @include mixinText.mediaText(40, 720, 720px);
+  @include mixinText.mediaText(40, 540, 540px);
+  @include mixinText.mediaText(40, 420, 420px);
+}
+
+.paragraph_regular{
+  font-size: func.vw(16, 1920);
+
+  @include mixinText.mediaText(16, 1440, 1440px);
+  @include mixinText.mediaText(16, 960, 960px);
+  @include mixinText.mediaText(16, 720, 720px);
+  @include mixinText.mediaText(16, 540, 540px);
+  @include mixinText.mediaText(16, 420, 420px);
+}
