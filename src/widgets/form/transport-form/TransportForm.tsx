@@ -28,7 +28,6 @@ export const TransportForm = () => {
         }
     ]
 
-
     return (
         <div className={classes.transport_form}>
             <div className={classes.transport_form__head_text}>
@@ -51,12 +50,8 @@ export const TransportForm = () => {
             </div>
 
             <div className={classes.transport_form__flex_btn}>
-                <BaseBtn>
-                    Задать вопрос
-                </BaseBtn>
-
-                <BaseBtn>
-                    Оправить
+                <BaseBtn state={"orange"}>
+                    Отправить
                 </BaseBtn>
             </div>
         </div>
