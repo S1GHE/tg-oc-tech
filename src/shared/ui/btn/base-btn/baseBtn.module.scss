@@ -1,0 +1,11 @@
+@use "src/shared/style/func/func";
+
+.base_btn{
+  padding: func.vw(8, 1920) func.vw(16, 1920);
+  border-radius: func.vw(50, 1920);
+
+  &.primary{
+    background-color: var(--primary);
+    color: var(--white);
+  }
+}

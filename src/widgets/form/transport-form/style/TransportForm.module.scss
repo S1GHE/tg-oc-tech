@@ -1,0 +1,109 @@
+@use "src/shared/style/func/func";
+
+.transport_form{
+  width: 50%;
+  background-color: var(--white);
+  margin-inline: auto;
+  padding: func.vw(40, 1920) func.vw(60, 1920);
+  border-radius: func.vw(10, 1920);
+  
+  @media (max-width: 1440px) {
+    padding: func.vw(40, 1440) func.vw(60, 1440);
+    border-radius: func.vw(10, 1440);
+  }
+
+  @media (max-width: 960px) {
+    width: auto;
+    padding: func.vw(40, 960) func.vw(60, 960);
+    border-radius: func.vw(10, 960);
+  }
+  
+  @media (max-width: 720px) {
+    padding: func.vw(40, 720) func.vw(60, 720);
+    border-radius: func.vw(10, 720);
+  }
+  
+  @media (max-width: 540px) {
+    margin-inline: func.vw(25, 540);
+    padding: func.vw(20, 540) func.vw(30, 540);
+    border-radius: func.vw(10, 540);
+  }
+  
+  @media (max-width: 420px) {
+    margin-inline: func.vw(25, 420);
+    padding: func.vw(20, 420) func.vw(30, 420);
+    border-radius: func.vw(10, 420);
+  }
+}
+
+.transport_form__head_text{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: func.vw(20, 1920);
+  
+  @media (max-width: 1440px) {
+    gap: func.vw(20, 1440);
+  }
+  
+  @media (max-width: 960px) {
+    gap: func.vw(20, 960);
+  }
+  
+  @media (max-width: 720px) {
+    gap: func.vw(20, 720);
+  }
+  
+  @media (max-width: 540px) {
+    gap: func.vw(10, 540);
+  }
+  
+  @media (max-width: 420px) {
+    gap: func.vw(10, 420);
+  }
+}
+
+.transport_form__grid_input{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: func.vw(30, 1920);
+  margin-block: func.vw(30, 1920);
+  
+  @media (max-width: 1440px) {
+    grid-column-gap: func.vw(30, 1440);
+    margin-block: func.vw(30, 1440);
+  }
+  
+  @media (max-width: 960px) {
+    grid-column-gap: func.vw(30, 960);
+    margin-block: func.vw(30, 960);
+  }
+  
+  @media (max-width: 720px) {
+    grid-column-gap: func.vw(30, 720);
+    margin-block: func.vw(30, 720);
+  }
+  
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+    grid-column-gap: func.vw(15, 540);
+    grid-row-gap: func.vw(15, 540);
+    margin-block: func.vw(30, 540);
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: 1fr;
+    grid-column-gap: func.vw(15, 420);
+    grid-row-gap: func.vw(15, 420);
+    margin-block: func.vw(30, 420);
+  }
+}
+
+.transport_form__flex_btn{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: func.vw(10 , 1920);
+}

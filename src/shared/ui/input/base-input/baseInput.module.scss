@@ -1,0 +1,99 @@
+@use "src/shared/style/func/func";
+
+.base_input{
+  width: 100%;
+  border: 1px solid var(--black-t25);
+  padding: func.vw(8, 1920) func.vw(16, 1920);
+  border-radius: 5px;
+  transition: 300ms ease-in-out;
+
+  &.error{
+    @extend .base_input;
+    border: 1px solid var(--state-error);
+
+    @media (hover: hover) {
+      &:hover{
+        border: 1px solid var(--state-error);
+        box-shadow: 0 0 0 3px var(--state-error-t25);
+      }
+    }
+
+    @media (hover: none) {
+      &:active{
+        border: 1px solid var(--state-error);
+        box-shadow: 0 0 0 3px var(--state-error-t25);
+      }
+    }
+
+    &:focus{
+      border: 1px solid var(--state-error);
+      box-shadow: 0 0 0 3px var(--state-error-t25);
+    }
+  }
+
+  &.success{
+    @extend .base_input;
+    border: 1px solid var(--state-green);
+
+    @media (hover: hover) {
+      &:hover{
+        border: 1px solid var(--state-green);
+        box-shadow: 0 0 0 3px var(--state-green-t25);
+      }
+    }
+
+    @media (hover: none) {
+      &:active{
+        border: 1px solid var(--state-green);
+        box-shadow: 0 0 0 3px var(--state-green-t25);
+      }
+    }
+
+    &:focus{
+      border: 1px solid var(--state-green);
+      box-shadow: 0 0 0 3px var(--state-green-t25);
+    }
+  }
+
+  &::placeholder{
+    color: var(--black-t25);
+  }
+  
+  &:focus{
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-t25);
+  }
+
+  @media (hover: hover) {
+    &:hover{
+      border: 1px solid var(--primary);
+    }
+  }
+
+  @media (hover: none) {
+    &:active{
+      border: 1px solid var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-t25)
+    }
+  }
+
+  @media (max-width: 1440px) {
+    padding: func.vw(8, 1440) func.vw(16, 1440);
+  }
+  
+  @media (max-width: 960px) {
+    padding: func.vw(8, 960) func.vw(16, 960);
+  }
+  
+  @media (max-width: 720px) {
+    padding: func.vw(8, 720) func.vw(16, 720);
+  }
+  
+  @media (max-width: 540px) {
+    padding: func.vw(4, 540) func.vw(8, 540);
+  }
+  
+  @media (max-width: 420px) {
+    padding: func.vw(4, 420) func.vw(8, 420);
+  }
+}

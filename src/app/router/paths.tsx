@@ -4,7 +4,7 @@ import {PageNotFound} from "src/pages/page-not-found";
 
 export const PublicRoutes: IBasePath[] = [
     {
-        path: "/transport",
+        path: "/",
         element: <CreateReqTransport />
     },
     {

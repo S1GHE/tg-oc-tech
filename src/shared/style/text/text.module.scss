@@ -2,14 +2,25 @@
 @use "src/shared/style/func/mixin/mixinText";
 
 .h1{
-  font-size: func.vw(40, 1920);
+  font-size: func.vw(48, 1920);
   font-weight: bold;
 
-  @include mixinText.mediaText(40, 1440, 1440px);
-  @include mixinText.mediaText(40, 960, 960px);
-  @include mixinText.mediaText(40, 720, 720px);
-  @include mixinText.mediaText(40, 540, 540px);
-  @include mixinText.mediaText(40, 420, 420px);
+  @include mixinText.mediaText(48, 1440, 1440px);
+  @include mixinText.mediaText(48, 960, 960px);
+  @include mixinText.mediaText(48, 720, 720px);
+  @include mixinText.mediaText(48, 540, 540px);
+  @include mixinText.mediaText(48, 420, 420px);
+}
+
+.h4{
+  font-size: func.vw(24, 1920);
+  font-weight: bold;
+
+  @include mixinText.mediaText(24, 1440, 1440px);
+  @include mixinText.mediaText(24, 960, 960px);
+  @include mixinText.mediaText(24, 720, 720px);
+  @include mixinText.mediaText(24, 540, 540px);
+  @include mixinText.mediaText(24, 420, 420px);
 }
 
 .paragraph_regular{
@@ -20,4 +31,14 @@
   @include mixinText.mediaText(16, 720, 720px);
   @include mixinText.mediaText(16, 540, 540px);
   @include mixinText.mediaText(16, 420, 420px);
+}
+
+.span_regular{
+  font-size: func.vw(14, 1920);
+
+  @include mixinText.mediaText(14, 1440, 1440px);
+  @include mixinText.mediaText(14, 960, 960px);
+  @include mixinText.mediaText(14, 720, 720px);
+  @include mixinText.mediaText(14, 540, 540px);
+  @include mixinText.mediaText(14, 420, 420px);
 }
