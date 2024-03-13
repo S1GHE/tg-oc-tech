@@ -1,0 +1,44 @@
+@use "src/shared/style/func/func";
+
+.delimiter_form{
+  display: flex;
+  align-items: center;
+  gap: func.vw(8, 1920);
+  margin-block: func.vw(20, 1920);
+
+  &__svg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & h4{
+    color: var(--black-t25);
+  }
+
+  @media (max-width: 1440px) {
+    margin-block: func.vw(20, 1440);
+    gap: func.vw(8, 1440);
+  }
+
+  @media (max-width: 960px) {
+    margin-block: func.vw(20, 960);
+    gap: func.vw(8, 1440);
+  }
+
+  @media (max-width: 720px) {
+    margin-block: func.vw(20, 720);
+    gap: func.vw(8, 720);
+  }
+
+  @media (max-width: 540px) {
+    margin-block: func.vw(20, 540);
+    gap: func.vw(8, 540);
+  }
+
+  @media (max-width: 420px) {
+    margin-block: func.vw(20, 420);
+    gap: func.vw(8, 420);
+  }
+}

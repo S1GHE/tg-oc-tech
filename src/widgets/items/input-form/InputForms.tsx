@@ -16,7 +16,7 @@ export const InputForms: FC<InputFormsType> = (props) => {
 
     return (
         <div className={classes.input_form_container}>
-            <label>
+            <label className={TextStyle.span_regular}>
                 {render.label}
             </label>
 

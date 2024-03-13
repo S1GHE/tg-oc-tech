@@ -1,8 +1,54 @@
+@use "src/shared/style/func/func";
+
 .container{
-  overflow: hidden;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--black-main-bg);
+}
+
+.head_bg{
+  position: relative;
+  height: 200px;
+
+  &__text{
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+    background-color: var(--white);
+    top: 50%;
+    left: 50%;
+    padding: func.vw(15, 1920);
+    border-radius: 10px;
+    transform: translateY(-50%) translateX(-50%);
+    
+    @media (max-width: 1440px) {
+      padding: func.vw(15, 1440);
+    }
+    
+    @media (max-width: 960px) {
+      padding: func.vw(15, 960);
+    }
+    
+    @media (max-width: 720px) {
+      padding: func.vw(15, 720);
+    }
+    
+    @media (max-width: 540px) {
+      padding: func.vw(15, 540);
+    }
+
+    @media (max-width: 540px) {
+      padding: func.vw(15, 420);
+    }
+  }
+
+  &__img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
 }

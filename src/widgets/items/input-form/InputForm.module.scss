@@ -19,11 +19,11 @@
   }
   
   @media (max-width: 540px) {
-    gap: func.vw(5, 540);
+    gap: func.vw(10, 540);
   }
   
   @media (max-width: 420px) {
-    gap: func.vw(5, 420)
+    gap: func.vw(10, 420)
   }
 }
 

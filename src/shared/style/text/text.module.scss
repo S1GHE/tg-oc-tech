@@ -23,6 +23,17 @@
   @include mixinText.mediaText(24, 420, 420px);
 }
 
+.h6{
+  font-size: func.vw(18, 1920);
+  font-weight: lighter;
+
+  @include mixinText.mediaText(18, 1440, 1440px);
+  @include mixinText.mediaText(18, 960, 960px);
+  @include mixinText.mediaText(18, 720, 720px);
+  @include mixinText.mediaText(18, 540, 540px);
+  @include mixinText.mediaText(18, 420, 420px);
+}
+
 .paragraph_regular{
   font-size: func.vw(16, 1920);
 

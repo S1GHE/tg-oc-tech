@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {HTMLInputTypeAttribute, ReactNode} from "react";
 import {IValidators} from "src/shared/hooks";
 
 export interface InputFormsType {
@@ -16,4 +16,5 @@ interface renderInput{
     label: string,
     success: string,
     error: string
+    type?: HTMLInputTypeAttribute;
 }
