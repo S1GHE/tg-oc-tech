@@ -15,6 +15,7 @@ export interface RenderInputType{
 interface renderInput{
     label: string,
     success: string,
-    error: string
+    error: string,
+    placeholder?: string | undefined;
     type?: HTMLInputTypeAttribute;
 }

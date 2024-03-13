@@ -42,7 +42,8 @@ export const TransportForm = () => {
                 label: "Дата поездки",
                 error: "Дата введена не корректно",
                 success: "Данные ведены корректно",
-                type: "date"
+                type: "date",
+                placeholder: "дд/мм/гггг"
             }, validators: useInput(
                 "", {isEmpty: true, regExp: regPhone}
             )
@@ -53,7 +54,8 @@ export const TransportForm = () => {
                 label: "Время поездки",
                 error: "Время поездки введено не корректно",
                 success: "Данные ведены корректно",
-                type: "time"
+                type: "time",
+                placeholder: "--:--"
             }, validators: useInput(
                 "", {isEmpty: true, regExp: regTime}
             )
