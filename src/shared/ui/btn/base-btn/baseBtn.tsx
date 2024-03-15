@@ -6,13 +6,15 @@ import {StateBtnType} from "src/shared/ui/btn/type/btnType.ts";
 
 export interface IBaseBtn extends BtnType {
     state?: "green" | "orange" | "black" | "primary"
+    disabled?: boolean
 }
 
 export const BaseBtn: FC<IBaseBtn> = (props) => {
     const {
         children,
         onClick,
-        state="primary"
+        state="primary",
+        disabled
     } = props;
 
     const stateClasses: StateBtnType = {
@@ -26,7 +28,7 @@ export const BaseBtn: FC<IBaseBtn> = (props) => {
         <button className={useCombineClass([
             classes.base_btn, stateClasses[state]
         ])}
-                onClick={onClick}>
+                onClick={onClick} disabled={disabled}>
             {children}
         </button>
     );

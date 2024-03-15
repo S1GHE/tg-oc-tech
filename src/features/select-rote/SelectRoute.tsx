@@ -30,7 +30,7 @@ export const SelectRoute = () => {
         ])
     }
 
-    const handlerDeletRoute = (id: number) => {
+    const handlerDeletedRoute = (id: number) => {
         setRouterInput(newRouteInput => newRouteInput.filter(
             item => item.id !== id
         ))
@@ -59,7 +59,7 @@ export const SelectRoute = () => {
 
                         {
                             (index !== 0 && index !== 1) &&
-                            <div className={classes.route_input__icon} onClick={() => handlerDeletRoute(el.id)}>
+                            <div className={classes.route_input__icon} onClick={() => handlerDeletedRoute(el.id)}>
                                 <div className={classes.route_input__svg}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                          className="bi bi-plus" viewBox="0 0 16 16">

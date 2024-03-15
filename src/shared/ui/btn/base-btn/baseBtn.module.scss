@@ -1,136 +1,180 @@
 @use "src/shared/style/func/func";
 
-.base_btn{
+.base_btn {
   padding: func.vw(8, 1920) func.vw(16, 1920);
   border-radius: func.vw(10, 1920);
   transition: 300ms ease-in-out;
 
-  &.primary{
+  &.primary {
     background-color: var(--primary);
     color: var(--white);
 
     @media (hover: hover) {
-      &:hover{
+      &:hover {
         background-color: var(--primary-t25);
         color: var(--primary);
       }
     }
-    
+
     @media (hover: none) {
-      &:active{
+      &:active {
         background-color: var(--primary);
         box-shadow: 0 0 0 3px var(--primary-t25);
         color: var(--white);
       }
     }
 
-    &:active{
+    &:active {
       background-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-t25);
       color: var(--white);
     }
+
+    &:disabled {
+      background-color: var(--gray-C9);
+      color: var(--black);
+
+      &:hover, &:active {
+        color: var(--black);
+        background-color: var(--gray-C9);
+        box-shadow: inherit;
+      }
+    }
   }
 
-  &.green{
+  &.green {
     background-color: var(--green);
     color: var(--black);
-    
+
     @media (hover: hover) {
-      &:hover{
+      &:hover {
         background-color: var(--green-t25);
         color: var(--black);
       }
     }
 
     @media (hover: none) {
-      &:active{
+      &:active {
         background-color: var(--green);
         color: var(--black);
         box-shadow: 0 0 0 3px var(--green-t25);
       }
     }
 
-    &:active{
+    &:active {
       background-color: var(--green);
       color: var(--black);
       box-shadow: 0 0 0 3px var(--green-t25);
     }
+
+    &:disabled {
+      background-color: var(--gray-C9);
+      color: var(--black);
+
+      &:hover, &:active {
+        color: var(--black);
+        background-color: var(--gray-C9);
+        box-shadow: inherit;
+      }
+    }
   }
 
-  &.black{
+  &.black {
     background-color: var(--black);
     color: var(--white);
 
     @media (hover: hover) {
-      &:hover{
+      &:hover {
         background-color: var(--gray-C9);
         color: var(--black);
       }
     }
 
     @media (hover: none) {
-      &:active{
+      &:active {
         background-color: var(--black);
         color: var(--white);
         box-shadow: 0 0 0 3px var(--gray-C9);
       }
     }
 
-    &:active{
+    &:active {
       background-color: var(--black);
       color: var(--white);
       box-shadow: 0 0 0 3px var(--gray-C9);
     }
+
+    &:disabled {
+      background-color: var(--gray-C9);
+      color: var(--black);
+
+      &:hover, &:active {
+        color: var(--black);
+        background-color: var(--gray-C9);
+        box-shadow: inherit;
+      }
+    }
   }
 
-  &.orange{
+  &.orange {
     background-color: var(--orange);
     color: var(--white);
 
     @media (hover: hover) {
-      &:hover{
+      &:hover {
         background-color: var(--orange-t25);
         color: var(--orange);
       }
     }
 
     @media (hover: none) {
-      &:active{
+      &:active {
         background-color: var(--orange);
         color: var(--black);
         box-shadow: 0 0 0 3px var(--orange-t25);
       }
     }
 
-    &:active{
+    &:active {
       background-color: var(--orange);
       color: var(--white);
       box-shadow: 0 0 0 3px var(--orange-t25);
     }
-  }
-  
-  @media (max-width: 1440px) {
-    padding: func.vw(8, 1440) func.vw(16, 1440);
-    border-radius: func.vw(10, 1440);
-  }
-  
-  @media (max-width: 960px) {
-    padding: func.vw(8, 960) func.vw(16, 960);
-    border-radius: func.vw(10, 960);
-  }
-  
-  @media (max-width: 720px) {
-    padding: func.vw(8, 720) func.vw(16, 720);
-    border-radius: func.vw(10, 720);
-  }
-  
-  @media (max-width: 540px) {
-    padding: func.vw(8, 540) func.vw(16, 540);
-    border-radius: func.vw(10, 540);
-  }
-  
-  @media (max-width: 420px) {
-    padding: func.vw(8, 420) func.vw(16, 420);
-    border-radius: func.vw(10, 420);
+
+    &:disabled {
+      background-color: var(--gray-C9);
+      color: var(--black);
+
+      &:hover, &:active {
+        color: var(--black);
+        background-color: var(--gray-C9);
+        box-shadow: inherit;
+      }
+    }
+
+    @media (max-width: 1440px) {
+      padding: func.vw(8, 1440) func.vw(16, 1440);
+      border-radius: func.vw(10, 1440);
+    }
+
+    @media (max-width: 960px) {
+      padding: func.vw(8, 960) func.vw(16, 960);
+      border-radius: func.vw(10, 960);
+    }
+
+    @media (max-width: 720px) {
+      padding: func.vw(8, 720) func.vw(16, 720);
+      border-radius: func.vw(10, 720);
+    }
+
+    @media (max-width: 540px) {
+      padding: func.vw(8, 540) func.vw(16, 540);
+      border-radius: func.vw(10, 540);
+    }
+
+    @media (max-width: 420px) {
+      padding: func.vw(8, 420) func.vw(16, 420);
+      border-radius: func.vw(10, 420);
+    }
   }
 }

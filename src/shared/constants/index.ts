@@ -1,5 +1,5 @@
-import {regEmail, regName, numbersOnlyRegex, regPhone, regTime} from "src/shared/constants/regExp.ts";
+import {regEmail, regName, numbersOnlyRegex, regPhone, regTime, regDate} from "src/shared/constants/regExp.ts";
 
 export {
-    regEmail, regName, numbersOnlyRegex, regPhone, regTime
+    regEmail, regName, numbersOnlyRegex, regPhone, regTime, regDate
 }

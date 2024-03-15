@@ -2,10 +2,11 @@ import {BaseInput} from "src/shared/ui/input";
 import classes from "src/widgets/form/transport-form/style/TransportForm.module.scss";
 import {InputForms, RenderInputType} from "src/widgets/items/input-form";
 import {useInput} from "src/shared/hooks";
-import {numbersOnlyRegex, regName, regPhone, regTime} from "src/shared/constants";
+import {numbersOnlyRegex, regDate, regName, regPhone, regTime} from "src/shared/constants";
 import {BaseBtn} from "src/shared/ui/btn";
 import {DelimiterForm} from "src/widgets/form/transport-form/widgets/delimiter-from/DelimiterForm.tsx";
 import {SelectRoute} from "src/features/select-rote";
+import {useEffect, useState} from "react";
 
 export const TransportForm = () => {
     const renderInput:Array<RenderInputType> = [
@@ -43,9 +44,8 @@ export const TransportForm = () => {
                 error: "Дата введена не корректно",
                 success: "Данные ведены корректно",
                 type: "date",
-                placeholder: "дд/мм/гггг"
             }, validators: useInput(
-                "", {isEmpty: true, regExp: regPhone}
+                "", {isEmpty: true, regExp: regDate}
             )
         },
 
@@ -55,12 +55,28 @@ export const TransportForm = () => {
                 error: "Время поездки введено не корректно",
                 success: "Данные ведены корректно",
                 type: "time",
-                placeholder: "--:--"
             }, validators: useInput(
                 "", {isEmpty: true, regExp: regTime}
             )
         },
-    ]
+
+        {
+            input: {
+                label: "Структурное подразделение",
+                error: "Данные введены не корректно",
+                success: "Данные ведены корректно",
+            }, validators: useInput(
+                "", {isEmpty: true, regExp: regName}
+            )
+        },
+    ];
+
+    const [statusSend, setStatusSend] = useState<boolean>(true)
+
+    useEffect(() => {
+        setStatusSend(!renderInput.every(el => el.validators.isValid))
+    }, [renderInput]);
+
     return (
         <div className={classes.transport_form}>
             <DelimiterForm>
@@ -80,7 +96,7 @@ export const TransportForm = () => {
 
 
             <div className={classes.transport_form__flex_btn}>
-                <BaseBtn state={"orange"}>
+                <BaseBtn state={"orange"} disabled={statusSend}>
                     Отправить
                 </BaseBtn>
             </div>
