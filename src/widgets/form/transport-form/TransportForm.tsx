@@ -8,11 +8,6 @@ import {DelimiterForm} from "src/widgets/form/transport-form/widgets/delimiter-f
 import {routerInputType, SelectRoute} from "src/features/select-rote";
 import {useEffect, useState} from "react";
 
-declare global {
-    interface Window {
-        Telegram: any;
-    }
-}
 
 export const TransportForm = () => {
     const renderInput: Array<RenderInputType> = [
@@ -76,7 +71,6 @@ export const TransportForm = () => {
             )
         },
     ];
-    const tg = window.Telegram.webApp;
 
     const [statusSend, setStatusSend] = useState<boolean>(false)
     const [statusRoute, setStatusRoute] = useState<boolean>(false);
@@ -121,8 +115,8 @@ export const TransportForm = () => {
             <SelectRoute changeStatusSelect={setStatusRoute} getInfo={setSelectData}/>
 
             <div className={classes.transport_form__flex_btn}>
-                <BaseBtn state={"primary"} onClick={() => {tg.close()}}>
-                    {tg.initDataUnsafe?.user.username}
+                <BaseBtn state={"primary"} onClick={() => {Telegram.WebApp.close()}}>
+                    Закрыть
                 </BaseBtn>
                 <BaseBtn state={"orange"} disabled={!statusSend} onClick={() => handlerSend()}>
                     Отправить

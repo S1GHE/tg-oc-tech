@@ -27,6 +27,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "sass": "^1.70.0",
     "scss": "^0.2.4",
+    "telegram-webapps": "^7.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }
