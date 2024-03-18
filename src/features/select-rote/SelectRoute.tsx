@@ -1,22 +1,30 @@
-import {useState} from "react";
+import {Dispatch, FC, SetStateAction, useEffect, useState} from "react";
 import {IconBtn} from "src/shared/ui/btn";
 import classes from "src/features/select-rote/style/selectRoute.module.scss";
 import {TextStyle} from "src/shared/style/text";
 
-export const SelectRoute = () => {
-    type routerInputType = {
-        id: number
-        pls: string,
-    }
+export type routerInputType = {
+    id: number
+    pls: string,
+    value: string
+}
 
+export interface ISelectRoute {
+    changeStatusSelect: Dispatch<SetStateAction<boolean>>
+    getInfo: Dispatch<SetStateAction<routerInputType[] | undefined>>
+}
+
+export const SelectRoute:FC<ISelectRoute> = ({changeStatusSelect, getInfo}) => {
     const [routeInput, setRouterInput] = useState<routerInputType[]>([
         {
             id: 1,
             pls: "Откуда забрать?",
+            value:""
         },
         {
             id: 2,
             pls: "Место прибытия",
+            value:""
         }
     ])
 
@@ -25,16 +33,34 @@ export const SelectRoute = () => {
 
         setRouterInput([
             ...routeInput, {
-                id: resID, pls: "Дополнительная точка"
+                id: resID, pls: "Дополнительная точка", value: ""
             }
         ])
     }
 
+    const handlerChangeInput = (id: number, value: string) =>{
+        setRouterInput(routeInput.map(
+            (el) => el.id === id ? {...el, value: value}: el
+        ))
+    }
+
+
     const handlerDeletedRoute = (id: number) => {
         setRouterInput(newRouteInput => newRouteInput.filter(
             item => item.id !== id
-        ))
+        ));
     }
+
+    useEffect(() => {
+        changeStatusSelect(routeInput.every(el => el.value));
+
+
+        if (routeInput.every(el => el.value)){
+            getInfo(routeInput)
+        }
+
+    }, [routeInput])
+
 
     return (
         <div>
@@ -54,8 +80,12 @@ export const SelectRoute = () => {
 
             <div className={classes.route_set}>
                 {
-                    routeInput.map((el, index) => <div className={classes.route_input}>
-                        <input placeholder={el.pls}/>
+                    routeInput.map((el, index) => <div key={el.id} className={classes.route_input}>
+                        <input
+                            placeholder={el.pls} 
+                            value={el.value}
+                            onChange={(e) => handlerChangeInput(el.id, e.target.value)}
+                        />
 
                         {
                             (index !== 0 && index !== 1) &&
@@ -72,6 +102,8 @@ export const SelectRoute = () => {
                     </div>)
                 }
             </div>
+
+
         </div>
     );
 };

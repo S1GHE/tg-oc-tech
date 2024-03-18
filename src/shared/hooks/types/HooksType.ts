@@ -1,6 +1,7 @@
 import {ChangeEvent, FocusEventHandler} from "react";
+import {InputInterface} from "src/shared/ui/input";
 
-export interface IValidators{
+export interface IValidators extends InputInterface{
     isValid:boolean
     isDirty:boolean
     isEmpty:boolean

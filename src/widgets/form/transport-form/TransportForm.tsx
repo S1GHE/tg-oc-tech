@@ -1,12 +1,20 @@
-import {BaseInput} from "src/shared/ui/input";
+import {BaseInput, BaseTextarea} from "src/shared/ui/input";
 import classes from "src/widgets/form/transport-form/style/TransportForm.module.scss";
 import {InputForms, RenderInputType} from "src/widgets/items/input-form";
 import {useInput} from "src/shared/hooks";
 import {numbersOnlyRegex, regDate, regName, regPhone, regTime} from "src/shared/constants";
 import {BaseBtn} from "src/shared/ui/btn";
 import {DelimiterForm} from "src/widgets/form/transport-form/widgets/delimiter-from/DelimiterForm.tsx";
-import {SelectRoute} from "src/features/select-rote";
+import {routerInputType, SelectRoute} from "src/features/select-rote";
 import {useEffect, useState} from "react";
+
+declare global {
+    interface Window {
+        Telegram: any;
+    }
+}
+
+const tg = window.Telegram.webApp;
 
 export const TransportForm = () => {
     const renderInput:Array<RenderInputType> = [
@@ -71,11 +79,27 @@ export const TransportForm = () => {
         },
     ];
 
-    const [statusSend, setStatusSend] = useState<boolean>(true)
+    const [statusSend, setStatusSend] = useState<boolean>(false)
+    const [statusRoute, setStatusRoute] = useState<boolean>(false);
+    const [textareaValue, setTextareaValue] = useState<string>("");
+    const [selectData, setSelectData] =
+        useState<routerInputType[]>()
 
     useEffect(() => {
-        setStatusSend(!renderInput.every(el => el.validators.isValid))
+        tg.ready()
+    }, []);
+
+    useEffect(() => {
+        setStatusSend(renderInput.every(el => el.validators.isValid && statusRoute))
     }, [renderInput]);
+
+    const handlerSend = () => {
+        tg.close()
+
+        console.table(
+            [...renderInput.map(el => el.validators.value), textareaValue, selectData]
+        )
+    }
 
     return (
         <div className={classes.transport_form}>
@@ -86,17 +110,24 @@ export const TransportForm = () => {
             <div className={classes.transport_form__grid_input}>
                 {
                     renderInput.map((el) =>
-                        <InputForms validators={el.validators} render={el.input}>
+                        <InputForms key={el.input.label} validators={el.validators} render={el.input}>
                             <BaseInput {...el.input} {...el.validators}/>
                         </InputForms>)
                 }
             </div>
 
-            <SelectRoute/>
+            <DelimiterForm>
+                Дополнительные комментарий
+            </DelimiterForm>
 
+            <BaseTextarea value={textareaValue} onChange={(e) => {
+                setTextareaValue(e.target.value)
+            }}/>
+
+            <SelectRoute changeStatusSelect={setStatusRoute} getInfo={setSelectData}/>
 
             <div className={classes.transport_form__flex_btn}>
-                <BaseBtn state={"orange"} disabled={statusSend}>
+                <BaseBtn state={"orange"} disabled={!statusSend} onClick={() => handlerSend()}>
                     Отправить
                 </BaseBtn>
             </div>
