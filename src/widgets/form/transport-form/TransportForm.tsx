@@ -122,7 +122,7 @@ export const TransportForm = () => {
 
             <div className={classes.transport_form__flex_btn}>
                 <BaseBtn state={"primary"} onClick={() => {tg.close()}}>
-                    Закрыть
+                    {tg.initDataUnsafe?.user.username}
                 </BaseBtn>
                 <BaseBtn state={"orange"} disabled={!statusSend} onClick={() => handlerSend()}>
                     Отправить
