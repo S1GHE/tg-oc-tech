@@ -85,9 +85,6 @@ export const TransportForm = () => {
     const [selectData, setSelectData] =
         useState<routerInputType[]>()
 
-    useEffect(() => {
-        tg.ready()
-    }, []);
 
     useEffect(() => {
         setStatusSend(renderInput.every(el => el.validators.isValid && statusRoute))
