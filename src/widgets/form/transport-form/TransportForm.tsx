@@ -14,8 +14,6 @@ declare global {
     }
 }
 
-const tg = window.Telegram.webApp;
-
 export const TransportForm = () => {
     const renderInput: Array<RenderInputType> = [
         {
@@ -78,6 +76,7 @@ export const TransportForm = () => {
             )
         },
     ];
+    const tg = window.Telegram.webApp;
 
     const [statusSend, setStatusSend] = useState<boolean>(false)
     const [statusRoute, setStatusRoute] = useState<boolean>(false);
