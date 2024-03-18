@@ -78,15 +78,22 @@ export const TransportForm = () => {
     const [selectData, setSelectData] =
         useState<routerInputType[]>()
 
+    useEffect(() => {
+        Telegram.WebApp.ready()
+    }, [])
 
     useEffect(() => {
         setStatusSend(renderInput.every(el => el.validators.isValid && statusRoute))
     }, [renderInput]);
 
     const handlerSend = () => {
-        console.table(
-            [...renderInput.map(el => el.validators.value), textareaValue, selectData]
-        )
+        Telegram.WebApp.sendData(JSON.stringify({
+            type: "message",
+            data: {
+                text:  `${selectData}`,
+                chat_id: 477868775
+            }
+        }))
     }
 
     return (
