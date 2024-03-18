@@ -17,7 +17,7 @@ declare global {
 const tg = window.Telegram.webApp;
 
 export const TransportForm = () => {
-    const renderInput:Array<RenderInputType> = [
+    const renderInput: Array<RenderInputType> = [
         {
             input: {
                 label: "Имя",
@@ -91,8 +91,6 @@ export const TransportForm = () => {
     }, [renderInput]);
 
     const handlerSend = () => {
-        tg.close()
-
         console.table(
             [...renderInput.map(el => el.validators.value), textareaValue, selectData]
         )
@@ -124,6 +122,9 @@ export const TransportForm = () => {
             <SelectRoute changeStatusSelect={setStatusRoute} getInfo={setSelectData}/>
 
             <div className={classes.transport_form__flex_btn}>
+                <BaseBtn state={"primary"} onClick={() => {tg.close()}}>
+                    Закрыть
+                </BaseBtn>
                 <BaseBtn state={"orange"} disabled={!statusSend} onClick={() => handlerSend()}>
                     Отправить
                 </BaseBtn>

@@ -40,6 +40,31 @@
         box-shadow: inherit;
       }
     }
+    @media (max-width: 1440px) {
+      padding: func.vw(8, 1440) func.vw(16, 1440);
+      border-radius: func.vw(10, 1440);
+    }
+
+    @media (max-width: 960px) {
+      padding: func.vw(8, 960) func.vw(16, 960);
+      border-radius: func.vw(10, 960);
+    }
+
+    @media (max-width: 720px) {
+      padding: func.vw(8, 720) func.vw(16, 720);
+      border-radius: func.vw(10, 720);
+    }
+
+    @media (max-width: 540px) {
+      padding: func.vw(8, 540) func.vw(16, 540);
+      border-radius: func.vw(10, 540);
+    }
+
+    @media (max-width: 420px) {
+      padding: func.vw(8, 420) func.vw(16, 420);
+      border-radius: func.vw(10, 420);
+    }
+
   }
 
   &.green {
@@ -77,6 +102,31 @@
         box-shadow: inherit;
       }
     }
+
+    @media (max-width: 1440px) {
+      padding: func.vw(8, 1440) func.vw(16, 1440);
+      border-radius: func.vw(10, 1440);
+    }
+
+    @media (max-width: 960px) {
+      padding: func.vw(8, 960) func.vw(16, 960);
+      border-radius: func.vw(10, 960);
+    }
+
+    @media (max-width: 720px) {
+      padding: func.vw(8, 720) func.vw(16, 720);
+      border-radius: func.vw(10, 720);
+    }
+
+    @media (max-width: 540px) {
+      padding: func.vw(8, 540) func.vw(16, 540);
+      border-radius: func.vw(10, 540);
+    }
+
+    @media (max-width: 420px) {
+      padding: func.vw(8, 420) func.vw(16, 420);
+      border-radius: func.vw(10, 420);
+    }
   }
 
   &.black {
@@ -113,6 +163,31 @@
         background-color: var(--gray-C9);
         box-shadow: inherit;
       }
+    }
+
+    @media (max-width: 1440px) {
+      padding: func.vw(8, 1440) func.vw(16, 1440);
+      border-radius: func.vw(10, 1440);
+    }
+
+    @media (max-width: 960px) {
+      padding: func.vw(8, 960) func.vw(16, 960);
+      border-radius: func.vw(10, 960);
+    }
+
+    @media (max-width: 720px) {
+      padding: func.vw(8, 720) func.vw(16, 720);
+      border-radius: func.vw(10, 720);
+    }
+
+    @media (max-width: 540px) {
+      padding: func.vw(8, 540) func.vw(16, 540);
+      border-radius: func.vw(10, 540);
+    }
+
+    @media (max-width: 420px) {
+      padding: func.vw(8, 420) func.vw(16, 420);
+      border-radius: func.vw(10, 420);
     }
   }
 
