@@ -90,6 +90,7 @@ export const TransportForm = () => {
     const handlerSend = () => {
        axios.post("https://a25954-90b9.w.d-f.pw/web-data", {
            info: renderInput.map((el) => el.validators.value),
+           textArea: textareaValue,
            data: selectData
        }).then(() => {
            Telegram.WebApp.close();
