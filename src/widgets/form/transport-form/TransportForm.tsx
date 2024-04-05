@@ -89,15 +89,15 @@ export const TransportForm = () => {
 
     const handlerSend = () => {
        axios.post("https://a25954-90b9.w.d-f.pw/web-data", {
+           user_id: Telegram.WebApp.initData,
            info: renderInput.map((el) => el.validators.value),
            data: selectData
-       }).then(() => {
-           Telegram.WebApp.close()
-       })
+       }).then(() => Telegram.WebApp.close())
     }
 
     return (
         <div className={classes.transport_form}>
+
             <DelimiterForm>
                 Персональная информация
             </DelimiterForm>
