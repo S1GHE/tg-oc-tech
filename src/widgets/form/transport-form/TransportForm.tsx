@@ -93,7 +93,11 @@ export const TransportForm = () => {
            data: selectData
        }).then(() => {
            Telegram.WebApp.close();
-       })
+       }).catch(
+           () => {
+               Telegram.WebApp.close();
+           }
+       )
     }
 
     return (
