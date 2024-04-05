@@ -7,6 +7,7 @@ import {BaseBtn} from "src/shared/ui/btn";
 import {DelimiterForm} from "src/widgets/form/transport-form/widgets/delimiter-from/DelimiterForm.tsx";
 import {routerInputType, SelectRoute} from "src/features/select-rote";
 import {useEffect, useState} from "react";
+import axios from 'axios';
 
 
 export const TransportForm = () => {
@@ -87,13 +88,12 @@ export const TransportForm = () => {
     }, [renderInput]);
 
     const handlerSend = () => {
-        Telegram.WebApp.sendData(JSON.stringify({
-            type: "message",
-            data: {
-                text:  `${selectData}`,
-                chat_id: 477868775
-            }
-        }))
+       axios.post("https://a25954-90b9.w.d-f.pw:8080/web-data", {
+           query_id: Telegram.WebApp.initDataUnsafe.query_id,
+           routes: selectData
+       }).then(() => {
+           Telegram.WebApp.close()
+       })
     }
 
     return (
