@@ -88,10 +88,19 @@ export const TransportForm = () => {
     }, [renderInput]);
 
     const handlerSend = () => {
-       axios.post("https://a25954-90b9.w.d-f.pw/web-data", {
-           info: renderInput.map((el) => el.validators.value),
-           textArea: textareaValue,
-           data: selectData
+        const initData = Telegram.WebApp.initDataUnsafe;
+        const chatID = initData?.user?.id;
+
+       axios.post("http://127.0.0.1:8080/api/", {
+        chatID: chatID,
+        name: renderInput[0].validators.value,
+        numberPeople:  renderInput[1].validators.value,
+        phone: renderInput[2].validators.value,
+        date: renderInput[3].validators.value,
+        time: renderInput[4].validators.value,
+        division: renderInput[5].validators.value,
+        notes: textareaValue,
+        routes: selectData
        }).then(() => {
            Telegram.WebApp.close();
        }).catch(
