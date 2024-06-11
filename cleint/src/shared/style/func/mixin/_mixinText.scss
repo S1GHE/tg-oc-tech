@@ -1,0 +1,7 @@
+@use "src/shared/style/func/func";
+
+@mixin mediaText($value, $size, $width){
+  @media (max-width: $width) {
+      font-size: func.vw($value, $size);
+  }
+}
