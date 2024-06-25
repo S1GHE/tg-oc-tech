@@ -1,0 +1,7 @@
+time="2024-06-25T10:54:26+03:00" level=info msg="Logger initialized and file is open"
+time="2024-06-25T10:54:37+03:00" level=warning msg="module:  | Key: 'ChatID' Error:Field validation for 'ChatID' failed on the 'required' tag"
+time="2024-06-25T10:56:10+03:00" level=warning msg="module:  | Bad Request: chat not found"
+time="2024-06-25T10:56:44+03:00" level=warning msg="module:  | Key: 'ChatID' Error:Field validation for 'ChatID' failed on the 'required' tag"
+time="2024-06-25T10:57:35+03:00" level=warning msg="module:  | Bad Request: chat not found"
+time="2024-06-25T11:00:28+03:00" level=warning msg="module:  | Bad Request: chat not found"
+time="2024-06-25T11:00:39+03:00" level=warning msg="module:  | Bad Request: chat not found"

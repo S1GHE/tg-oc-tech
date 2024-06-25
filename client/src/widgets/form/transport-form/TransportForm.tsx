@@ -18,7 +18,7 @@ export const TransportForm = () => {
                 error: "Имя указано не корректно",
                 success: "Данные ведены корректно",
             }, validators: useInput(
-                "", {isEmpty: true, regExp: regName}
+                "", { isEmpty: true, regExp: regName }
             )
         },
         {
@@ -28,7 +28,7 @@ export const TransportForm = () => {
                 success: "Данные ведены корректно",
                 type: "number"
             }, validators: useInput(
-                "", {isEmpty: true, regExp: numbersOnlyRegex}
+                "", { isEmpty: true, regExp: numbersOnlyRegex }
             )
         },
         {
@@ -37,7 +37,7 @@ export const TransportForm = () => {
                 error: "Номер телефонна введен не корректно",
                 success: "Данные ведены корректно",
             }, validators: useInput(
-                "", {isEmpty: true, regExp: regPhone}
+                "", { isEmpty: true, regExp: regPhone }
             )
         },
         {
@@ -47,10 +47,9 @@ export const TransportForm = () => {
                 success: "Данные ведены корректно",
                 type: "date",
             }, validators: useInput(
-                "", {isEmpty: true, regExp: regDate}
+                "", { isEmpty: true, regExp: regDate }
             )
         },
-
         {
             input: {
                 label: "Время поездки",
@@ -58,57 +57,54 @@ export const TransportForm = () => {
                 success: "Данные ведены корректно",
                 type: "time",
             }, validators: useInput(
-                "", {isEmpty: true, regExp: regTime}
+                "", { isEmpty: true, regExp: regTime }
             )
         },
-
         {
             input: {
                 label: "Структурное подразделение",
                 error: "Данные введены не корректно",
                 success: "Данные ведены корректно",
             }, validators: useInput(
-                "", {isEmpty: true, regExp: regName}
+                "", { isEmpty: true, regExp: regName }
             )
         },
     ];
 
-    const [statusSend, setStatusSend] = useState<boolean>(false)
+    const [statusSend, setStatusSend] = useState<boolean>(false);
     const [statusRoute, setStatusRoute] = useState<boolean>(false);
     const [textareaValue, setTextareaValue] = useState<string>("");
-    const [selectData, setSelectData] =
-        useState<routerInputType[]>()
+    const [selectData, setSelectData] = useState<routerInputType[]>();
 
     useEffect(() => {
-        Telegram.WebApp.ready()
-    }, [])
+        Telegram.WebApp.ready();
+    }, []);
 
     useEffect(() => {
-        setStatusSend(renderInput.every(el => el.validators.isValid && statusRoute))
+        setStatusSend(renderInput.every(el => el.validators.isValid && statusRoute));
     }, [renderInput]);
 
     const handlerSend = () => {
         const initData = Telegram.WebApp.initDataUnsafe;
         const chatID = initData?.user?.id;
 
-       axios.post("http://127.0.0.1:8080/api/", {
-        chatID: chatID,
-        name: renderInput[0].validators.value,
-        numberPeople:  renderInput[1].validators.value,
-        phone: renderInput[2].validators.value,
-        date: renderInput[3].validators.value,
-        time: renderInput[4].validators.value,
-        division: renderInput[5].validators.value,
-        notes: textareaValue,
-        routes: selectData
-       }).then(() => {
-           Telegram.WebApp.close();
-       }).catch(
-           () => {
-               Telegram.WebApp.close();
-           }
-       )
-    }
+        axios.post("https://a28075-6d77.t.d-f.pw/api/", {
+            chatID: chatID ? chatID : 1,
+            name: renderInput[0].validators.value,
+            numberPeople: renderInput[1].validators.value,
+            phone: renderInput[2].validators.value,
+            date: renderInput[3].validators.value,
+            time: renderInput[4].validators.value,
+            division: renderInput[5].validators.value,
+            notes: textareaValue,
+            routes: selectData?.map(el => el.value)
+        }).then(() => {
+            Telegram.WebApp.close();
+        }).catch((e) => {
+            console.error(e)
+        });
+    };
+
 
     return (
         <div className={classes.transport_form}>

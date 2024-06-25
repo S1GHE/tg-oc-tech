@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"backend/pkg/helpers"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -8,8 +9,9 @@ import (
 )
 
 func (h *Handler) SendMsg(c *gin.Context) {
+	const op = "handler.sendMsg"
 	var req struct {
-		ChatID       int64    `json:"сhatID" binding:"required"`
+		ChatID       int64    `json:"chatID" binding:"required"`
 		Name         string   `json:"name" binding:"required"`
 		NumberPeople string   `json:"numberPeople" binding:"required"`
 		Phone        string   `json:"phone" binding:"required"`
@@ -21,7 +23,8 @@ func (h *Handler) SendMsg(c *gin.Context) {
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"err": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"err": err.Error()})
+		h.log.Warning(helpers.LogSprintF(op, err))
 		return
 	}
 
@@ -47,6 +50,7 @@ func (h *Handler) SendMsg(c *gin.Context) {
 		)
 
 		if _, err := h.bot.Bot.Send(msg); err != nil {
+			h.log.Warning(helpers.LogSprintF(op, err))
 			c.JSON(http.StatusInternalServerError, gin.H{"err": err.Error()})
 			return
 		}
@@ -57,6 +61,7 @@ func (h *Handler) SendMsg(c *gin.Context) {
 	)
 
 	if _, err := h.bot.Bot.Send(msgClient); err != nil {
+		h.log.Warning(helpers.LogSprintF(op, err))
 		c.JSON(http.StatusInternalServerError, gin.H{"err": err.Error()})
 		return
 	}

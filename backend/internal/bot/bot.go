@@ -3,8 +3,10 @@ package bot
 import (
 	"backend/internal/config"
 	"backend/pkg/helpers"
+	"crypto/tls"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/sirupsen/logrus"
+	"net/http"
 )
 
 type Bot struct {
@@ -15,7 +17,14 @@ type Bot struct {
 
 func NewBot(log *logrus.Logger, config *config.Config) *Bot {
 	const op = "internal.bot.NewBot"
-	bot, err := tgbotapi.NewBotAPI(config.TOKEN)
+
+	httpClient := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		},
+	}
+
+	bot, err := tgbotapi.NewBotAPIWithClient(config.TOKEN, tgbotapi.APIEndpoint, httpClient)
 	if err != nil {
 		panic(helpers.LogSprintF(op, err))
 	}
