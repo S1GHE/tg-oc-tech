@@ -34,16 +34,16 @@ func (h *Handler) SendMsg(c *gin.Context) {
 		msg := tgbotapi.NewMessage(
 			userID, fmt.Sprintf(
 				`
-Заявка на транпорт:
+Заявка на транспорт:
 				
 Имя: %s
-Количетсво человек: %s
+Количество человек: %s
 Номер контактного лица: %s
 Дата поездки: %s
 Время поезкди: %s
 Структурное подразделение: %s
 
-Дополнительные комментарий: %s
+Дополнительные комментарии: %s
 Список маршрутов: %s
 				`,
 				req.Name, req.NumberPeople, req.Phone, req.Date, req.Time, req.Division, req.Notes, req.Routes),
